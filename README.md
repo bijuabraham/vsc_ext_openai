@@ -1,10 +1,10 @@
-# highlightstuff README
+# VSC Extension for OpenAI README
 
-This is the README for your extension "highlightstuff". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "VSC Extension OpenAI". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Describe specific features of your extension, including screenshots of your extension in action. Image paths are relative to this README file.
 
 For example if there is an image subfolder under your extension project workspace:
 
