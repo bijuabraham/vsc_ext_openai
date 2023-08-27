@@ -1,40 +1,28 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+// Import the VS Code extensibility API and axios library
 import * as vscode from 'vscode';
 import axios from 'axios';
 
+// Create a reference to the VS Code window object
 let window = vscode.window;
 
+// Set the OpenAI API endpoint and API key
 const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-const API_KEY = 'Add API key here';  // Replace with your actual API key
+const API_KEY = 'API_KEY';  // Replace with your actual API key
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+// This method is called when the extension is activated
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
+	// Output a message to the console to indicate that the extension is active
 	console.log('Congratulations, your extension "highlightstuff" is now active!');
+
+	// Get a reference to the active text editor
 	let activeEditor = window.activeTextEditor;
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
+	// Register a command with VS Code
 	let disposable = vscode.commands.registerCommand('highlightstuff.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-	
-		// let pattern = new RegExp("chatgpt", 'g');
-		
-		// let text = activeEditor.document.getText();
-		// let match;
-		// while ((match = pattern.exec(text)) !== null) {
-		// 	var startPos = activeEditor.document.positionAt(match.index);
-        //     var endPos = activeEditor.document.positionAt(match.index + match[0].length);
-		// 	const range = [new vscode.Range(startPos, endPos)];
-		// 	activeEditor.setDecorations(window.createTextEditorDecorationType({ backgroundColor: "yellow" }), range);
-		// }
 
+        // This code will be executed when the command is executed
+        // Get the text from the active editor
 		try {
 			const payload = {
 			  model: 'gpt-3.5-turbo',
@@ -51,7 +39,8 @@ export function activate(context: vscode.ExtensionContext) {
 			  'Content-Type': 'application/json',
 			  'Authorization': `Bearer ${API_KEY}`,
 			};
-		
+
+			// Make a request to the OpenAI API to generate a response
 			const response = axios.post(API_ENDPOINT, payload, { headers });
 			
 			response.then(r => {
@@ -62,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 							new vscode.Position(activeEditor.document.lineCount, 0) , "\n" + r.data.choices[0].message.content);
 					});
 				  } else {
-					console.log('No valid');
+					console.log('Not valid');
 				  }
 			});
 			

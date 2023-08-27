@@ -1,20 +1,20 @@
-# VSC Extension for OpenAI README
+# VSC_ext_openai README
 
-This is the README for your extension "VSC Extension OpenAI". After writing up a brief description, we recommend including the following sections.
+This code is a Visual Studio Code extension that uses the OpenAI API to generate a response to user input. When the user executes the highlightstuff.helloWorld command, the extension sends the text from the active editor to the OpenAI API and displays the response in a message box.
+
+The code imports the vscode and axios libraries, creates a reference to the VS Code window object, and sets the OpenAI API endpoint and API key. It then defines the activate function, which is called when the extension is activated.
+
+The activate function registers a command with VS Code that sends the text from the active editor to the OpenAI API and displays the response in a message box. It uses the axios library to make the API request and handles the response and any errors that occur. Finally, it adds the disposable to the context so it can be cleaned up later.
 
 ## Features
 
-Describe specific features of your extension, including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Read Prompt and connect to the OpenAI API
+Responses from openai are sent to the editor
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Visual Studio Code
+OpenAi API account and key
 
 ## Extension Settings
 
@@ -29,7 +29,7 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+API KEY is part of the code
 
 ## Release Notes
 
@@ -37,15 +37,7 @@ Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial POC Release of extension
 
 ---
 
